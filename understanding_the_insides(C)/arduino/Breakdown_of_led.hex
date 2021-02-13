@@ -1,0 +1,103 @@
+File : led.hex
+Code : 
+================== C Program ============================
+#include <avr/io.h>
+#define F_CPU 16000000
+#define BLINK_DELAY_MS 1000
+#include <util/delay.h>
+int main (void)
+{
+  DDRB |= 0B100000; // PORTB5
+  while(1) {
+    PORTB |= 0B100000; // PORTB5
+    _delay_ms(BLINK_DELAY_MS);
+    PORTB &= ~ 0B100000; // PORTB5
+    _delay_ms(BLINK_DELAY_MS);
+  }
+}
+================= Hex File Contents ======================
+st   = Start
+cnt  = Count
+addr = Address
+typ  = Record Type 
+Data = Data 
+Cs   = Check Sum  (2's Complement Sum)
+----------------------------------------------------------
+st| cnt | addr| typ|             DATA                 | Cs
+---------------------------------------------------------
+: | 10  |0000 | 00 | 0C9434000C943E000C943E000C943E00 | 82
+: | 10  |0010 | 00 | 0C943E000C943E000C943E000C943E00 | 68
+: | 10  |0020 | 00 | 0C943E000C943E000C943E000C943E00 | 58
+: | 10  |0030 | 00 | 0C943E000C943E000C943E000C943E00 | 48
+: | 10  |0040 | 00 | 0C943E000C943E000C943E000C943E00 | 38
+: | 10  |0050 | 00 | 0C943E000C943E000C943E000C943E00 | 28
+: | 10  |0060 | 00 | 0C943E000C943E0011241FBECFEFD8E0 | 4C
+: | 10  |0070 | 00 | DEBFCDBF0E9440000C9456000C940000 | DF
+: | 10  |0080 | 00 | 259A2D9A2FEF83ED90E3215080409040 | E8
+: | 10  |0090 | 00 | E1F700C000002D982FEF83ED90E32150 | 91
+: | 10  |00A0 | 00 | 80409040E1F700C00000EBCFF894FFCF | 14
+: | 00  |0000 | 01 |                                  | FF
+----------------------------------------------------------
+
+
+=================== Disassmbly Code ======================
+00000000 <.sec1>:   
+   0:   0c 94 34 00     jmp     0x68            ;  0x68
+   4:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+   8:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+   c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  10:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  14:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  18:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  1c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  20:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  24:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  28:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  2c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  30:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  34:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  38:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  3c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  40:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  44:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  48:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  4c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  50:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  54:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  58:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  5c:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  60:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  64:   0c 94 3e 00     jmp     0x7c            ;  0x7c
+  68:   11 24           eor     r1, r1
+  6a:   1f be           out     0x3f, r1        ; 63
+  6c:   cf ef           ldi     r28, 0xFF       ; 255
+  6e:   d8 e0           ldi     r29, 0x08       ; 8
+  70:   de bf           out     0x3e, r29       ; 62
+  72:   cd bf           out     0x3d, r28       ; 61
+  74:   0e 94 40 00     call    0x80            ;  0x80
+  78:   0c 94 56 00     jmp     0xac            ;  0xac
+  7c:   0c 94 00 00     jmp     0               ;  0x0
+  80:   25 9a           sbi     0x04, 5         ; 4
+  82:   2d 9a           sbi     0x05, 5         ; 5
+  84:   2f ef           ldi     r18, 0xFF       ; 255
+  86:   83 ed           ldi     r24, 0xD3       ; 211
+  88:   90 e3           ldi     r25, 0x30       ; 48
+  8a:   21 50           subi    r18, 0x01       ; 1
+  8c:   80 40           sbci    r24, 0x00       ; 0
+  8e:   90 40           sbci    r25, 0x00       ; 0
+  90:   e1 f7           brne    .-8             ;  0x8a
+  92:   00 c0           rjmp    .+0             ;  0x94
+  94:   00 00           nop
+  96:   2d 98           cbi     0x05, 5         ; 5
+  98:   2f ef           ldi     r18, 0xFF       ; 255
+  9a:   83 ed           ldi     r24, 0xD3       ; 211
+  9c:   90 e3           ldi     r25, 0x30       ; 48
+  9e:   21 50           subi    r18, 0x01       ; 1
+  a0:   80 40           sbci    r24, 0x00       ; 0
+  a2:   90 40           sbci    r25, 0x00       ; 0
+  a4:   e1 f7           brne    .-8             ;  0x9e
+  a6:   00 c0           rjmp    .+0             ;  0xa8
+  a8:   00 00           nop
+  aa:   eb cf           rjmp    .-42            ;  0x82
+  ac:   f8 94           cli
+  ae:   ff cf           rjmp    .-2             ;  0xae

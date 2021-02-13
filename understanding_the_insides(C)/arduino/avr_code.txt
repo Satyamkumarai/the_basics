@@ -1,0 +1,6 @@
+BFD library support routines for the AVR architecture.
+    https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=bfd/cpu-avr.c;hb=4d18591be953e2faeaaa280484d375fe05857770#l99
+Opcode table for the Atmel AVR micro controllers.
+    https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=include/opcode/avr.h;hb=4d18591be953e2faeaaa280484d375fe05857770#l20
+tc-avr.c -- Assembler code for the ATMEL AVR
+    https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=gas/config/tc-avr.c;hb=4d18591be953e2faeaaa280484d375fe05857770#l71
