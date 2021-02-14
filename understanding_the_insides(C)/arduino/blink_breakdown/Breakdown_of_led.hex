@@ -17,7 +17,7 @@ int main (void)
 }
 ================= Hex File Contents ======================
 st   = Start
-cnt  = Count
+cnt  = Byte Count
 addr = Address
 typ  = Record Type 
 Data = Data 

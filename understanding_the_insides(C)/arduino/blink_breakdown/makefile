@@ -1,5 +1,5 @@
 #To get the Required Files : sudo apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude make
-CFLAGS ?= -Os -DF_APU=16000000UL -mmcu=atmega328p
+CFLAGS ?= -Os -DF_CPU=16000000UL -mmcu=atmega328p
 LDFLAGS ?= -mmcu=atmega328p
 # Path where your Arduino Uno is connected to
 ARDUINO_USB ?= /dev/ttyUSB0

@@ -4,7 +4,6 @@
 #include <avr/io.h>
 
 
-#define F_CPU 16000000
 #define BLINK_DELAY_MS 1000
 
 #include <util/delay.h>
